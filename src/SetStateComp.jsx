@@ -18,7 +18,8 @@ constructor()
        (posRes) =>{
            this.setState({arr:posRes.data});
 
-       }  
+       },
+
        (errRes)=>{
            console.log(errRes);
        }
