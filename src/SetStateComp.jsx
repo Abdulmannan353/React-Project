@@ -12,7 +12,7 @@ constructor()
  }
 login= ()=>
 {
-if(this.refs.usrnam.value==="Abdul Mannan" && this.refs.pass.value==="Abdul")
+ if(this.refs.usrnam.value==="Abdul Mannan" && this.refs.pass.value==="Abdul")
     {
         this.setState({login: "SUCESS"});
     }
