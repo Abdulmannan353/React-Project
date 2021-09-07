@@ -1,47 +1,58 @@
 import React from "react";
+import axios from "axios"
 export default class SetStateComp extends React.Component{
 constructor()
- {
+  {
 
     super();
 
     this.state = 
     {
-        login: '',
+        arr: [],
     };
- }
-login= ()=>
-{
- if(this.refs.usrnam.value==="Abdul Mannan" && this.refs.pass.value==="Abdul")
-    {
-        this.setState({login: "SUCESS"});
-    }
-        else
-    {
-        this.setState({ login: "FAILED"});
-    }
+  }
+  componentDidMount()
+  {
+      axios.get('https://restcountries.eu/rest/v2/all').then
+       (
+       (posRes) =>{
+           this.setState({arr:posRes.data});
 
-}
+       }  
+       (errRes)=>{
+           console.log(errRes);
+       }
+       )
+  }
+
     render()
   {
     return(
              <div>
-                 <br /><br /><br />
-                <fieldset>
-                    <legend>
-                        Login Form
-                    </legend>
-                        <input type="text" ref ="usrnam" placeholder ="Enter Your Name Here"/>
-                        <br /><br /><br />
-                        <input type="password" ref="pass" Placeholder ="Enter Your Password Here"/>
-                        <br /> <br /> <br />
-                        <button onClick= {this.login}>LOGIN</button>
-                        <br /><br /><br />
-                        <h1> LOGIN STATUS :
-                        { this.state.login}
-                        </h1>
-                    
-                </fieldset>
+                <Table border="1" align="center">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Capital</th>
+                            <th>Flag</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.arr.map(
+                            (el,i)=>{
+                                <tr key = {i} >
+                                    <td>
+                                        {el.name}
+                                    </td>
+                                    <td>{el.capital}</td>
+                                    <td><img src={el.flag} alt={el.name} /></td>
+                                </tr>
+                            }
+                        )}
+                    </tbody>
+
+                </Table>
             </div> 
     )
   }
