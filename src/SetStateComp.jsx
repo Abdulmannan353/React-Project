@@ -30,30 +30,34 @@ constructor()
   {
     return(
              <div>
-                <Table border="1" align="center">
-                    <thead>
+                <table border="1" align="center">
+                    <thead style={{color: "red",backgroundColor: "yellow", fontSize: 20, fontFamily: "fantasy" }}>
                         <tr>
-                            <th>S/N</th>
-                            <th>Name</th>
-                            <th>Capital</th>
-                            <th>Flag</th>
+                            <th>S#</th>
+                            <th>NAME</th>
+                            <th>CAPITAL</th>
+                            <th>FLAG</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style={{color: "red", fontSize: 14}}>
                         {this.state.arr.map(
-                            (el,i)=>{
+                            (el,i)=>(
                                 <tr key = {i} >
-                                    <td>
+                                    <td align="center">
+                                        {i
+                                        }
+                                    </td>
+                                    <td align="center" width="80">
                                         {el.name}
                                     </td>
-                                    <td>{el.capital}</td>
-                                    <td><img src={el.flag} alt={el.name} /></td>
+                                    <td align= "center" width= "80">{el.capital}</td>
+                                    <td><img src={el.flag} alt={el.name} width= "150" height= "50"/></td>
                                 </tr>
-                            }
+                            )
                         )}
                     </tbody>
 
-                </Table>
+                </table>
             </div> 
     )
   }
