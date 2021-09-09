@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SetStateComp from './SetStateComp';
+import App from './SetStateComp';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SetStateComp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
