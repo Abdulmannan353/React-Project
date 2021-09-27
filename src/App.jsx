@@ -2,13 +2,18 @@ import React from "react";
 import "./Apps.css";
 import SearchBar from "./Components/SearchBar";
 import youtube from  "./apis/youtubekey";
+import VideoList from "./Components/videoList";
  class App extends React.Component{
-   onTermSubmit = (term) => {
-     youtube.get("/search",{
+   state={
+     videos: [],
+   };
+   onTermSubmit =async (term) => {
+     const res= await youtube.get("/search",{
        params: {
          q: term
        }
      })
+     this.setState({videos:res.data.items})
    }
      render()
      {
@@ -28,7 +33,7 @@ import youtube from  "./apis/youtubekey";
                       <h1>video player</h1> 
                   </div>
                    <div className= "col-md-4">
-                      <h1>video list</h1>
+                      <VideoList videos={this.state.videos} />
                   </div>
                 </div>
             </div>
