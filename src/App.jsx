@@ -1,8 +1,15 @@
 import React from "react";
 import "./Apps.css";
 import SearchBar from "./Components/SearchBar";
- class App extends React.Component
- {
+import youtube from  "./apis/youtubekey";
+ class App extends React.Component{
+   onTermSubmit = (term) => {
+     youtube.get("/search",{
+       params: {
+         q: term
+       }
+     })
+   }
      render()
      {
          return(
@@ -17,8 +24,7 @@ import SearchBar from "./Components/SearchBar";
 
                  <div className = "row">
                    <div className = "col-md-8">
-                     <SearchBar/>
-                      <h1>Search Bar </h1>
+                     <SearchBar onFormSubmit={this.onTermSubmit}/>
                       <h1>video player</h1> 
                   </div>
                    <div className= "col-md-4">
