@@ -7,8 +7,11 @@ import VideoDetails from "./Components/VideoDetails";
  class App extends React.Component{
    state={
      videos: [],
-     selectedVideo: ""
+     selectedVideo: "",
    };
+   componentDidMount(){
+     this.onTermSubmit("Home")
+   }
    onSelectVideo = (video)=>{
      this.setState({selectedVideo: video});
    }
@@ -18,7 +21,7 @@ import VideoDetails from "./Components/VideoDetails";
          q: term
        }
      })
-     this.setState({videos:res.data.items})
+     this.setState({videos:res.data.items, selectedVideo: res.data.items[0]})
    }
      render()
      {
@@ -35,10 +38,10 @@ import VideoDetails from "./Components/VideoDetails";
                  <div className = "row">
                    <div className = "col-md-8">
                      <SearchBar onFormSubmit={this.onTermSubmit}/>
-                      <VideoDetails />
+                      <VideoDetails video={this.state.selectedVideo}/>
                   </div>
                    <div className= "col-md-4">
-                      <VideoList videos={this.state.videos} onSelectVideo={this.onSelectVideo} />
+                     <VideoList videos={this.state.videos} onSelectVideo={this.onSelectVideo} />
                   </div>
                 </div>
             </div>

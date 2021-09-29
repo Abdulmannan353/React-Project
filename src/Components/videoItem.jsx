@@ -4,11 +4,11 @@ const videoItem =({video,onSelectVideo})=>{
     return(
     <>
     <div className="col-md-12" onClick={()=>{onSelectVideo(video)}}>
-        <div className="row border p-2" style={{cursor: "pointer"}}>
+        <div className="row border p-1" style={{cursor: "pointer"}}>
             <div className="col-md-3">
                 <img 
-                height="50px"
-                width= "60px"
+                height="70px"
+                width= "80px"
                 alt={video.snippet.tittle}
                 src={video.snippet.thumbnails.medium.url}
                 />
