@@ -3,10 +3,15 @@ import "./Apps.css";
 import SearchBar from "./Components/SearchBar";
 import youtube from  "./apis/youtubekey";
 import VideoList from "./Components/videoList";
+import VideoDetails from "./Components/VideoDetails";
  class App extends React.Component{
    state={
      videos: [],
+     selectedVideo: ""
    };
+   onSelectVideo = (video)=>{
+     this.setState({selectedVideo: video});
+   }
    onTermSubmit =async (term) => {
      const res= await youtube.get("/search",{
        params: {
@@ -30,10 +35,10 @@ import VideoList from "./Components/videoList";
                  <div className = "row">
                    <div className = "col-md-8">
                      <SearchBar onFormSubmit={this.onTermSubmit}/>
-                      <h1>video player</h1> 
+                      <VideoDetails />
                   </div>
                    <div className= "col-md-4">
-                      <VideoList videos={this.state.videos} />
+                      <VideoList videos={this.state.videos} onSelectVideo={this.onSelectVideo} />
                   </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 import React from "react";
 
-const videoItem =({video})=>{
+const videoItem =({video,onSelectVideo})=>{
     return(
     <>
-    <div className="col-md-12">
+    <div className="col-md-12" onClick={()=>{onSelectVideo(video)}}>
         <div className="row border p-2" style={{cursor: "pointer"}}>
             <div className="col-md-3">
                 <img 
